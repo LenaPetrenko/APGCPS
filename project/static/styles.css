@@ -1,0 +1,23 @@
+
+.main-color {
+    background-color: #4A7B6D;
+}
+
+.nav-color
+{
+    background-color: #213030;
+}
+.main-text{
+    color:   #E7D09F;
+}
+
+footer{
+    background-color: #213030;
+    color:   #E7D09F;
+}
+
+.ava{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}

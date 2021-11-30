@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<form  class="main-text" method="POST">
+    <div class="form-group row">
+        <label for="login" class="col-form-label col-md-2">Логин</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="login" id="login" value="{{ person.login or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="last_name" class="col-form-label col-md-2">Фамилия</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="last_name" id="last_name" value="{{ person.last_name or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="first_name" class="col-form-label col-md-2">Имя</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="first_name" id="first_name" value="{{ person.first_name or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="middle_name" class="col-form-label col-md-2">Отчество</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="middle_name" id="middle_name" value="{{ person.middle_name or '' }}">
+        </div>
+    </div>
+    
+    <!-- <div class="form-group row">
+        <div class="text-center my-3">
+            <a class="btn btn-light" href="{{ url_for('index') }}">
+             <input type="submit" class="btn btn-light" value="Сохранить" ></a>
+            </div>
+    </div> -->
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% from 'films/form.html' import render_film_form %}
+{% block content %}
+    <h1 class="my-5 main-text">Редактирование фильма</h1>
+
+    {{ render_film_form(url_for('update', film_id=film.id), film) }}
+
+{% endblock %}
+

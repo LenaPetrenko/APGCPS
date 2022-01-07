@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+    {% endfor %}
+{% endif %}
+{% endwith %}
+    <h1 class="my-5 main-text">Просмотр данных о книге</h1>
+    <container>
+        <div class="row">
+            <div class="col-4">
+                <img class="ml-auto im" src="{{ url_for('static', filename='/images/def.png') }}" alt="First slide">
+            </div>
+            <div class="col">
+                <table class="table mt-3 main-text">
+                    <tbody>
+                        <tr>
+                            <td>Название</td>
+                            <td>{{ film.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Автор</td>
+                            <td>{{ film.author }}</td>
+                        </tr>
+                        <tr>
+                            <td>Описание</td>
+                            <td>{{ film.description }}</td>
+                        </tr>
+                        <tr>
+                            <td>Главные герои</td>
+                            <td>{{ film.characters }}</td>
+                        </tr>
+                        <tr>
+                            <td>Жанр</td>
+                            <td>{{ film.genre}}</td>
+                        </tr>
+                        <tr>
+                            <td>Год производства</td>
+                            <td>{{ film.production_year }}</td>
+                        </tr>
+                        <tr>
+                            <td>Язык оригинала</td>
+                            <td>{{ film.original_language	 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Ссылка на покупку</td>
+                            <td><a href="{{ film.url }}">{{ film.url }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>ISBN</td>
+                            <td>{{ film.ISBN }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </container>
+    
+    <div class="text-center my-3">
+    <a class="btn btn-light" href="{{ url_for('comment', film_id=film.id) }}">Оставить комментарий</a>
+    </div>
+    <container class="my-5"> 
+        {% for comment in reviews %}
+        <div class="media sec-text my-3 nav-color p-3">
+            <img src="{{ url_for('static', filename='/images/ava.jpg') }}" class="mr-3 ava" alt="...">
+            <div class="media-body ml-3">
+                <div class="row">
+                        <h5 class="mt-0">{{ comment.first_name }} {{ comment.last_name }} </h5>
+                        <p class="mt-0 ml-3"> {{ comment.date_added }}</p>
+                </div>        
+                <div class="row">
+                    <p lass="mt-0"><b class="fa fa-mobile fa-lg">Оценка: {% if comment.rating==5 %}отлично
+                        {% elif comment.rating==4 %}хорошо{% elif comment.rating==3 %}удовлетворительно
+                        {% elif comment.rating==2 %}неудовлетворительно{% elif comment.rating==1 %}плохо{% else %}ужасно {% endif %}</b></p>
+                </div>
+              {{	comment.review_text}}
+            </div>
+          </div>
+    </container>
+        {% endfor %}
+{% endblock %}
+

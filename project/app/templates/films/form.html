@@ -1,0 +1,78 @@
+{% macro render_film_form(url, film={}) %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<form  class="main-text" action="{{ url }}" method="POST">
+    <div class="form-group row">
+        <label for="name" class="col-form-label col-md-2">Название</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="name" id="name" value="{{ film.name or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="author" class="col-form-label col-md-2">Автор</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="author" id="author" value="{{ film.author or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-form-label col-md-2">Описание</label>
+        <div class="col-md-6">	
+            <input class="form-control" type="text" name="description" id="description" value="{{ film.description or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="characters" class="col-form-label col-md-2">Главные герои</label>
+        <div class="col-md-6">	
+            <input class="form-control" type="text" name="characters" id="characters" value="{{ film.characters or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="genre" class="col-form-label col-md-2">Жанр</label>
+        <div class="col-md-6">	
+            <input class="form-control" type="text" name="genre" id="genre" value="{{ film.genre or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="production_year" class="col-form-label col-md-2">Год производства</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="production_year" id="production_year" value="{{ film.production_year or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="original_language" class="col-form-label col-md-2">Язык оригинала</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="original_language" id="original_language" value="{{ film.original_language or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="url" class="col-form-label col-md-2">Ссылка на покупку</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="url" id="url" value="{{ film.url or '' }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="ISBN" class="col-form-label col-md-2">ISBN</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" name="ISBN" id="ISBN" value="{{ film.ISBN or '' }}">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+    <div class="form-group row">
+        <input type="submit" class="btn btn-light" value="Сохранить">
+    </div>
+</div>
+</div>
+</form>
+
+{% endmacro %}

@@ -1,0 +1,32 @@
+
+.main-color {
+    background-color: #DEBC95;
+}
+
+.nav-color
+{
+    background-color: #382F26;
+}
+.main-text{
+    color:   #382F26;
+}
+
+.sec-text{
+    color:   #DEBC95;
+}
+
+footer{
+    background-color: #382F26;
+    color:   #DEBC95;
+}
+
+.ava{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.im{
+    width: 350px;
+    height: 350px;
+}
